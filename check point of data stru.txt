@@ -1,0 +1,43 @@
+Problem 1: Sum of Distinct Elements
+PROCEDURE sum_of_distinct(set1: ARRAY of INTEGER, size1: INTEGER, set2: ARRAY of INTEGER, size2: INTEGER, VAR sum: INTEGER)
+BEGIN
+   sum := 0
+
+   // Check elements in set1 not in set2
+   FOR i FROM 0 TO size1 - 1 DO
+      isDistinct := TRUE
+      FOR j FROM 0 TO size2 - 1 DO
+         IF set1[i] = set2[j] THEN
+            isDistinct := FALSE
+         ENDIF
+      ENDFOR
+      IF isDistinct THEN
+         sum := sum + set1[i]
+      ENDIF
+   ENDFOR
+
+   // Check elements in set2 not in set1
+   FOR i FROM 0 TO size2 - 1 DO
+      isDistinct := TRUE
+      FOR j FROM 0 TO size1 - 1 DO
+         IF set2[i] = set1[j] THEN
+            isDistinct := FALSE
+         ENDIF
+      ENDFOR
+      IF isDistinct THEN
+         sum := sum + set2[i]
+      ENDIF
+   ENDFOR
+END
+
+ALGORITHM main
+VAR
+   set1: ARRAY[4] of INTEGER := [3, 1, 7, 9]
+   set2: ARRAY[5] of INTEGER := [2, 4, 1, 9, 3]
+   sum: INTEGER
+
+BEGIN
+   sum_of_distinct(set1, 4, set2, 5, sum)
+   WRITE(sum) // Output: 13
+END
+Problem 2: Dot Product & Orthogonality Check
