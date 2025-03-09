@@ -1,4 +1,5 @@
-Problem 1: Sum of Distinct Elements
+Problem 1: Sum of Distinct Elements : 
+
 PROCEDURE sum_of_distinct(set1: ARRAY of INTEGER, size1: INTEGER, set2: ARRAY of INTEGER, size2: INTEGER, VAR sum: INTEGER)
 BEGIN
    sum := 0
@@ -40,4 +41,34 @@ BEGIN
    sum_of_distinct(set1, 4, set2, 5, sum)
    WRITE(sum) // Output: 13
 END
-Problem 2: Dot Product & Orthogonality Check
+---------------------------------------------------------------------
+Problem 2: Dot Product & Orthogonality Check :
+
+PROCEDURE dot_product(v1: ARRAY of INTEGER, v2: ARRAY of INTEGER, n: INTEGER, VAR ps: INTEGER)
+BEGIN
+   ps := 0
+   FOR i FROM 0 TO n - 1 DO
+      ps := ps + (v1[i] * v2[i])
+   ENDFOR
+END
+
+PROCEDURE check_orthogonality(v1: ARRAY of INTEGER, v2: ARRAY of INTEGER, n: INTEGER)
+VAR
+   dp: INTEGER
+BEGIN
+   dot_product(v1, v2, n, dp)
+   IF dp = 0 THEN
+      WRITE("The vectors are orthogonal.")
+   ELSE
+      WRITE("The vectors are not orthogonal.")
+   ENDIF
+END
+
+ALGORITHM main
+VAR
+   v1: ARRAY[3] of INTEGER := [1, 2, 3]
+   v2: ARRAY[3] of INTEGER := [-3, 0, 1]
+
+BEGIN
+   check_orthogonality(v1, v2, 3)
+END
